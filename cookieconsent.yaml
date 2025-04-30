@@ -1,0 +1,37 @@
+name: Cookie Consent by g-c.dev
+version: 1.0.0
+description: Simple cookie consent plugin based on https://github.com/orestbida/cookieconsent
+author: Giuseppe Chiesa
+homepage: https://g-c.dev
+licence: MIT
+
+settings:
+  message_base: >
+    These cookies are essential for the website to function correctly and provide you with the services you request. 
+    They enable core functionalities such as page navigation and access to secure areas of the website. Without these 
+    cookies, the website cannot operate effectively.
+  message_analytics: >
+    These cookies allow us to collect and analyze information about how you interact with our website. This data helps 
+    us to understand website traffic, user behavior, and the effectiveness of our content. By using this information, 
+    we can improve and optimize our website to enhance your browsing experience.
+  message_functionality: ''
+  message_marketing: ''
+
+forms:
+  fields:
+    message_base:
+      type: textarea
+      label: 'necessary cookies message'
+    message_analytics:
+      type: textarea
+      label: 'analytics cookies message'
+    message_functionality:
+      type: textarea
+      label: 'functionality cookies message'
+    message_marketing:
+      type: textarea
+      label: 'marketing cookies message'
+    legal_and_privacy_url:
+      type: text
+      label: 'legal and privacy URL'
+      placeholder: 'the page you host with legal and privacy content'

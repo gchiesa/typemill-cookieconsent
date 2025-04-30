@@ -1,0 +1,91 @@
+window.addEventListener("load", function(){
+    CookieConsent.run({
+    guiOptions: {
+        consentModal: {
+            layout: "box wide",
+            position: "top center",
+            equalWeightButtons: true,
+            flipButtons: false
+        },
+        preferencesModal: {
+            layout: "box",
+            position: "right",
+            equalWeightButtons: true,
+            flipButtons: false
+        }
+    },
+    categories: {
+        necessary: {
+            readOnly: true
+        },
+{% if message_functionality|trim %}
+        functionality: {},
+{% endif %}
+{% if message_marketing|trim %}
+        marketing: {},
+{% endif %}
+        analytics: {}
+
+    },
+    language: {
+        default: "en",
+        autoDetect: "browser",
+        translations: {
+            en: {
+                consentModal: {
+                    title: "We have Cookies... and they're not for eating",
+                    description: "Hey there! 👋 This site uses cookies to make things work smoothly and to help us understand how you use it. All good with that?",
+                    closeIconLabel: "",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    showPreferencesBtn: "Manage preferences",
+                    footer: "<a href=\"{{ legal_and_privacy_url|trim }}\">Legal and Privacy</a>\n"
+                },
+                preferencesModal: {
+                    title: "Consent Preferences Center",
+                    closeIconLabel: "Close modal",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    savePreferencesBtn: "Save preferences",
+                    serviceCounterLabel: "Service|Services",
+                    sections: [
+                        {
+                            title: "Cookie Usage",
+                            description: "This website uses cookies to enhance your browsing experience. Cookies are small text files that are stored on your device when you visit a website. They help us to remember your preferences, understand how you interact with our site, and ensure that certain features function correctly. We use different categories of cookies for various purposes, as outlined below.\n"
+                        },
+                        {
+                            title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always Enabled</span>",
+                            description: "{{ message_base|trim }}",
+                            linkedCategory: "necessary"
+                        },
+                        {
+                            title: "Analytics Cookies",
+                            description: "{{ message_analytics|trim }}",
+                            linkedCategory: "analytics"
+                        },
+{% if message_functionality|trim %}
+                        {
+                            title: "Functionality Cookies",
+                            description: "{{ message_functionality|trim }}",
+                            linkedCategory: "functionality"
+                        },
+{% endif %}
+{% if message_marketing|trim %}
+                        {
+                            title: "Marketing Cookies",
+                            description: "{{ message_marketing|trim }}",
+                            linkedCategory: "marketing"
+                        },
+{% endif %}
+                        {
+                            title: "More information",
+                            description: "For any query in relation to my policy on cookies and your choices, please check <a class=\"cc__link\" href=\"{{ legal_and_privacy_url }}\">Legal and Privacy</a> page."
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    disablePageInteraction: true
+});
+})
